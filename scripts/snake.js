@@ -5,10 +5,10 @@ const box = 32;
 
 // load images
 const ground = new Image();
-ground.src = "img/ground.png";
+ground.src = "images/ground.png";
 
 const foodImg = new Image();
-foodImg.src = "img/food.png";
+foodImg.src = "images/food.png";
 
 
 // load audio files
@@ -51,6 +51,8 @@ function direction(event) {
 
     } else if (key == 40 && d != "UP") {
         d = "DOWN";
+    } else if (key == 32) {
+        location.reload();
     }
 }
 
@@ -70,7 +72,7 @@ function draw() {
     ctx.drawImage(ground, 0, 0);
 
     for (let i = 0; i < snake.length; i++) {
-        ctx.fillStyle = (i == 0) ? "green" : "white";
+        ctx.fillStyle = (i == 0) ? "rgb(15, 83, 185)" : "rgb(22, 104, 228)";
         ctx.fillRect(snake[i].x, snake[i].y, box, box);
 
         ctx.strokeStyle = "transparent";
@@ -83,7 +85,7 @@ function draw() {
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
 
-    // which direction
+    // direction
     if (d == "LEFT") snakeX -= box;
     if (d == "UP") snakeY -= box;
     if (d == "RIGHT") snakeX += box;
@@ -97,24 +99,23 @@ function draw() {
             x: Math.floor(Math.random() * 17 + 1) * box,
             y: Math.floor(Math.random() * 15 + 3) * box
         }
-        // we don't remove the tail
+        // don't remove the tail
     } else {
         // remove the tail
         snake.pop();
     }
 
     // add new Head
-
     let newHead = {
         x: snakeX,
         y: snakeY
     }
 
     // game over
-
     if (snakeX < box || snakeX > 17 * box || snakeY < 3 * box || snakeY > 17 * box || collision(newHead, snake)) {
         clearInterval(game);
         dead.play();
+        document.getElementById('game-over-banner').style.display = 'block';
     }
 
     snake.unshift(newHead);
@@ -126,20 +127,8 @@ function draw() {
 
 let game = setInterval(draw, 100);
 
+document.getElementById("game-restart-btn").addEventListener("click", restartGame);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function restartGame() {
+    location.reload();
+}
