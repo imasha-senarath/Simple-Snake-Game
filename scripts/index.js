@@ -3,15 +3,12 @@ const ctx = canvas.getContext("2d");
 
 const box = 32;
 
-// load images
 const ground = new Image();
 ground.src = "images/ground.png";
 
 const foodImg = new Image();
 foodImg.src = "images/food.png";
 
-
-// load audio files
 let dead = new Audio();
 let eat = new Audio();
 
