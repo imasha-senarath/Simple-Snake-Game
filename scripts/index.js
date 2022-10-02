@@ -35,8 +35,6 @@ let score = 0;
 // control the snake
 let d;
 
-document.addEventListener("keydown", direction);
-
 function direction(event) {
     let key = event.keyCode;
     if (key == 37 && d != "RIGHT") {
@@ -126,6 +124,11 @@ let game = setInterval(draw, 100);
 
 document.getElementById("game-restart-btn").addEventListener("click", restartGame);
 
+document.getElementById("game-start-btn").addEventListener("click", function(){
+    document.addEventListener("keydown", direction); // Keys are initiated here otherwise game will start before tutorial is closed
+    document.getElementById("tutorial").style.display = 'none'; // Tutorial Hidden
+    d = "RIGHT" // A default movement is applied
+})
 function restartGame() {
     location.reload();
 }
