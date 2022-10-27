@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Sora', sans-serif;
 }
 
 body{
@@ -44,5 +45,61 @@ canvas{
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
+}
+
+.mobile-view{
+    display: none;
+    position: absolute;
+    width: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mobile-view h1{
+    font-weight: 500;
+    text-align: center;
+}
+
+
+/* ##################################### Start of Max-Width: 1200px ##################################### */
+
+@media only screen and (max-width: 1200px) {   
+}
+
+/* ##################################### End of Max-Width: 1200px ##################################### */
+
+
+
+/* ##################################### Start of Max-Width: 992px ##################################### */
+
+@media only screen and (max-width: 992px) {
+    
+}
+
+/* ##################################### End of Max-Width: 992px ##################################### */
+
+
+
+/* ##################################### start of Max-Width: 768px ##################################### */
+
+@media only screen and (max-width: 768px) {
+    canvas{
+        display: none;
+    }
+
+    .mobile-view{
+        display: block;
+    }
+    
+}
+
+/* ##################################### End of Max-Width: 768px ##################################### */
+
+
+
+/* ##################################### Start of Max-Width: 600px ##################################### */
+
+@media only screen and (max-width: 600px) {
 }
             
